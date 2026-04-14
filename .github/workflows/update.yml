@@ -1,0 +1,39 @@
+name: 毎朝5時 データ自動更新
+
+on:
+  schedule:
+    # 毎朝 5:00 JST = 20:00 UTC (前日)
+    - cron: '0 20 * * *'
+  # 手動でも実行できるようにする
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # コミット・プッシュに必要
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python 3.11 セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存ライブラリをインストール
+        run: pip install requests beautifulsoup4
+
+      - name: データ更新スクリプトを実行
+        run: python scripts/fetch_updates.py
+
+      - name: 変更があればコミット & プッシュ
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/events.js
+          # 差分がある場合のみコミット
+          git diff --staged --quiet || \
+            git commit -m "chore: auto-update events [$(date +'%Y-%m-%d')]"
+          git push

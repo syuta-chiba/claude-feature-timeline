@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude 新機能タイムライン</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #252836;
+      --border: #2e3347;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #c97bff;
+      --accent-dim: rgba(201,123,255,0.12);
+
+      --cat-model:   #60a5fa;
+      --cat-model-bg: rgba(96,165,250,0.12);
+      --cat-api:     #34d399;
+      --cat-api-bg:  rgba(52,211,153,0.12);
+      --cat-tool:    #a78bfa;
+      --cat-tool-bg: rgba(167,139,250,0.12);
+      --cat-sdk:     #fbbf24;
+      --cat-sdk-bg:  rgba(251,191,36,0.12);
+      --cat-console: #22d3ee;
+      --cat-console-bg: rgba(34,211,238,0.12);
+      --cat-deprecation: #f87171;
+      --cat-deprecation-bg: rgba(248,113,113,0.12);
+      --cat-other:   #94a3b8;
+      --cat-other-bg: rgba(148,163,184,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ─── Header ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .logo svg { flex-shrink: 0; }
+    .logo span { color: var(--accent); }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 180px;
+      position: relative;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    #search {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px 8px 34px;
+      color: var(--text);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--text-muted); }
+
+    .count-badge {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    #visible-count { color: var(--accent); font-weight: 600; }
+
+    /* ─── Filters ─── */
+    .filters {
+      max-width: 900px;
+      margin: 16px auto 0;
+      padding: 0 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ─── Timeline ─── */
+    main {
+      max-width: 900px;
+      margin: 28px auto 64px;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* vertical line */
+    .timeline-line {
+      position: absolute;
+      left: 55px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--border) 0%, transparent 100%);
+    }
+
+    /* year divider */
+    .year-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 32px 0 20px;
+      padding-left: 80px;
+    }
+    .year-divider:first-child { margin-top: 0; }
+    .year-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding-right: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .year-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* card row */
+    .entry {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .entry.hidden { display: none; }
+
+    /* date column */
+    .entry-date {
+      width: 54px;
+      min-width: 54px;
+      text-align: right;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding-top: 14px;
+      line-height: 1.4;
+    }
+
+    /* dot */
+    .entry-dot {
+      width: 12px;
+      min-width: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 17px;
+      position: relative;
+      z-index: 1;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      flex-shrink: 0;
+    }
+
+    /* card */
+    .entry-card {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .entry-card:hover {
+      border-color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-size: 0.93rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .cat-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .card-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* category colours */
+    .cat-model      { color: var(--cat-model);       background: var(--cat-model-bg);       }
+    .cat-api        { color: var(--cat-api);          background: var(--cat-api-bg);         }
+    .cat-tool       { color: var(--cat-tool);         background: var(--cat-tool-bg);        }
+    .cat-sdk        { color: var(--cat-sdk);          background: var(--cat-sdk-bg);         }
+    .cat-console    { color: var(--cat-console);      background: var(--cat-console-bg);     }
+    .cat-deprecation{ color: var(--cat-deprecation);  background: var(--cat-deprecation-bg); }
+    .cat-other      { color: var(--cat-other);        background: var(--cat-other-bg);       }
+
+    .dot.cat-model       { background: var(--cat-model);        border-color: var(--bg); }
+    .dot.cat-api         { background: var(--cat-api);          border-color: var(--bg); }
+    .dot.cat-tool        { background: var(--cat-tool);         border-color: var(--bg); }
+    .dot.cat-sdk         { background: var(--cat-sdk);          border-color: var(--bg); }
+    .dot.cat-console     { background: var(--cat-console);      border-color: var(--bg); }
+    .dot.cat-deprecation { background: var(--cat-deprecation);  border-color: var(--bg); }
+    .dot.cat-other       { background: var(--cat-other);        border-color: var(--bg); }
+
+    /* no-results */
+    #no-results {
+      display: none;
+      text-align: center;
+      padding: 64px 0;
+      color: var(--text-muted);
+    }
+    #no-results svg { margin-bottom: 12px; opacity: 0.4; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    @media (max-width: 600px) {
+      .timeline-line { left: 43px; }
+      .entry-date { width: 40px; min-width: 40px; font-size: 0.65rem; }
+      .year-divider { padding-left: 64px; }
+      .card-title { font-size: 0.88rem; }
+    }
+  </style>
+  <!-- イベントデータ (GitHub Actions により毎朝自動更新) -->
+  <script src="data/events.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M13 2L3 7v12l10 5 10-5V7L13 2z" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M13 2v22M3 7l10 5 10-5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      Claude <span>新機能タイムライン</span>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" type="text" placeholder="検索…" autocomplete="off" />
+    </div>
+    <div class="count-badge"><span id="visible-count">-</span> 件</div>
+  </div>
+</header>
+
+<div class="filters" id="filter-bar"></div>
+
+<main>
+  <div class="timeline-line"></div>
+  <div id="timeline"></div>
+  <div id="no-results">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <p>該当する項目が見つかりません</p>
+  </div>
+</main>
+
+<script>
+// ────────────────────────────────────────────
+//  DATA  (data/events.js から読み込み)
+// ────────────────────────────────────────────
+const EVENTS = window.EVENTS_DATA || [];
+
+// ────────────────────────────────────────────
+//  CATEGORY META
+// ────────────────────────────────────────────
+const CATS = {
+  model:       { label:"モデルリリース",   cls:"cat-model"       },
+  api:         { label:"API / 機能",       cls:"cat-api"         },
+  tool:        { label:"ツール",           cls:"cat-tool"        },
+  sdk:         { label:"SDK",             cls:"cat-sdk"         },
+  console:     { label:"コンソール",       cls:"cat-console"     },
+  deprecation: { label:"非推奨 / 終了",   cls:"cat-deprecation" },
+  other:       { label:"その他",           cls:"cat-other"       },
+};
+
+// ────────────────────────────────────────────
+//  BUILD UI
+// ────────────────────────────────────────────
+function buildFilters() {
+  const bar = document.getElementById("filter-bar");
+  const all = document.createElement("button");
+  all.className = "filter-btn active";
+  all.dataset.cat = "all";
+  all.textContent = "すべて";
+  bar.appendChild(all);
+
+  Object.entries(CATS).forEach(([key, meta]) => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn";
+    btn.dataset.cat = key;
+    const dot = document.createElement("span");
+    dot.className = `filter-dot ${meta.cls}`;
+    // use CSS var color as background via class
+    btn.appendChild(dot);
+    btn.appendChild(document.createTextNode(meta.label));
+    bar.appendChild(btn);
+  });
+
+  bar.addEventListener("click", e => {
+    const btn = e.target.closest(".filter-btn");
+    if (!btn) return;
+    bar.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilters();
+  });
+}
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split("-");
+  return `${m}/${d}`;
+}
+
+function buildTimeline() {
+  const container = document.getElementById("timeline");
+  let currentYear = null;
+
+  EVENTS.forEach((ev, i) => {
+    const year = ev.date.slice(0, 4);
+    if (year !== currentYear) {
+      currentYear = year;
+      const div = document.createElement("div");
+      div.className = "year-divider";
+      div.dataset.year = year;
+      div.innerHTML = `<span class="year-label">${year}</span><div class="year-line"></div>`;
+      container.appendChild(div);
+    }
+
+    const meta = CATS[ev.cat] || CATS.other;
+    const entry = document.createElement("div");
+    entry.className = "entry";
+    entry.dataset.cat = ev.cat;
+    entry.dataset.text = normalize(ev.title + " " + ev.desc + " " + (ev.kw || ""));
+
+    const linkHtml = ev.url
+      ? `<a class="card-link" href="${ev.url}" target="_blank" rel="noopener noreferrer">
+           詳細を見る →
+         </a>`
+      : "";
+
+    entry.innerHTML = `
+      <div class="entry-date">${fmtDate(ev.date)}</div>
+      <div class="entry-dot"><div class="dot ${meta.cls}"></div></div>
+      <div class="entry-card">
+        <div class="card-header">
+          <div class="card-title">${ev.title}</div>
+          <span class="cat-tag ${meta.cls}">${meta.label}</span>
+        </div>
+        <div class="card-desc">${ev.desc}</div>
+        ${linkHtml}
+      </div>
+    `;
+    container.appendChild(entry);
+  });
+}
+
+// ────────────────────────────────────────────
+//  NORMALIZE & SEARCH
+// ────────────────────────────────────────────
+
+// 正規化: 小文字化・全角→半角・カタカナ長音除去・スペース統一
+function normalize(s) {
+  return s
+    .toLowerCase()
+    .replace(/[！-～]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)) // 全角ASCII→半角
+    .replace(/[\u3041-\u3096]/g, c => String.fromCharCode(c.charCodeAt(0) + 0x60)) // ひらがな→カタカナ
+    .replace(/ー/g, '')   // カタカナ長音符除去 (コンピューター→コンピュタ)
+    .replace(/　/g, ' ')  // 全角スペース→半角
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+let activeCat = "all";
+let searchQ   = "";
+
+function applyFilters() {
+  const bar = document.getElementById("filter-bar");
+  const active = bar.querySelector(".filter-btn.active");
+  activeCat = active ? active.dataset.cat : "all";
+
+  // スペース区切りでAND検索、各トークンを正規化
+  const rawQ = document.getElementById("search").value.trim();
+  const tokens = normalize(rawQ).split(/\s+/).filter(Boolean);
+
+  const entries  = document.querySelectorAll(".entry");
+  const dividers = document.querySelectorAll(".year-divider");
+  const yearVis  = {};
+
+  let visible = 0;
+  entries.forEach(el => {
+    const catOk  = activeCat === "all" || el.dataset.cat === activeCat;
+    const text   = el.dataset.text;
+    const textOk = tokens.length === 0 || tokens.every(t => text.includes(t));
+    const show   = catOk && textOk;
+    el.classList.toggle("hidden", !show);
+    if (show) {
+      visible++;
+      // mark year as having visible items
+      let prev = el.previousElementSibling;
+      while (prev) {
+        if (prev.classList.contains("year-divider")) { yearVis[prev.dataset.year] = true; break; }
+        prev = prev.previousElementSibling;
+      }
+    }
+  });
+
+  // hide year dividers with no visible entries
+  dividers.forEach(d => {
+    d.style.display = yearVis[d.dataset.year] ? "" : "none";
+  });
+
+  document.getElementById("visible-count").textContent = visible;
+  document.getElementById("no-results").style.display = visible === 0 ? "block" : "none";
+}
+
+// ────────────────────────────────────────────
+//  INIT
+// ────────────────────────────────────────────
+buildFilters();
+buildTimeline();
+document.getElementById("search").addEventListener("input", applyFilters);
+
+// Set filter dot colors via CSS class (already done via CSS)
+// Initial count
+applyFilters();
+</script>
+</body>
+</html>
