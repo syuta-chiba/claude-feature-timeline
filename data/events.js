@@ -3,6 +3,9 @@
 //         https://www.anthropic.com/news
 // Last updated: 2026-04-14
 window.EVENTS_DATA = [
+  // 自動追加: 2026-04-14
+  { date:"2026-04-14", cat:"deprecation", title:"We announced the deprecation of the Claude Sonnet 4 model ( claude-sonnet-4-2025", desc:"We announced the deprecation of the Claude Sonnet 4 model ( claude-sonnet-4-20250514 ) and the Claude Opus 4 model ( claude-opus-4-20250514 ), with retirement on the Claude API scheduled for June 15, 2026. We recommend migrating to Claude Sonnet 4.6 and Claude Opus 4.6 respectively. Read more in mod", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 2026
   { date:"2026-04-09", cat:"other",   title:"Claude Cowork が GA (一般公開)",                    desc:"Claude デスクトップアプリ内の協働ワークスペースが macOS / Windows で正式 GA に。ロールベースアクセス制御・グループ支出制限・使用量アナリティクス・OpenTelemetry サポートなどエンタープライズ機能6つを同時追加。", url:"https://www.testingcatalog.com/anthropic-launches-claude-cowork-in-general-availability/", kw:"cowork claude cowork ga 一般公開 desktop collaboration チーム enterprise" },
   { date:"2026-04-09", cat:"tool",    title:"Claude Managed Agents 公開ベータ & ant CLI",        desc:"フルマネージドのエージェントハーネスが公開ベータに。セキュアなサンドボックス・組み込みツール・SSEストリーミングを提供。Claude API の高速 CLI クライアント ant も同時公開。", url:"https://platform.claude.com/docs/en/managed-agents/overview", kw:"managed agents エージェント ant cli sandbox" },
