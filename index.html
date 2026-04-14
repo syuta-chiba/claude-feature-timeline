@@ -301,10 +301,24 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
     @media (max-width: 600px) {
-      .timeline-line { left: 43px; }
-      .entry-date { width: 40px; min-width: 40px; font-size: 0.65rem; }
-      .year-divider { padding-left: 64px; }
+      /* 左右の余白を縮小してカード幅を確保 */
+      header { padding: 10px 12px; }
+      .filters { padding: 0 12px; }
+      main { padding: 0 12px; }
+
+      /* 日付列・ドット列・gap を小さく */
+      .timeline-line { left: 34px; }
+      .entry { gap: 8px; }
+      .entry-date { width: 28px; min-width: 28px; font-size: 0.62rem; line-height: 1.3; }
+      .entry-dot { width: 10px; min-width: 10px; }
+
+      /* 年区切り */
+      .year-divider { padding-left: 48px; }
+
+      /* カード内文字 */
       .card-title { font-size: 0.88rem; }
+      .card-desc  { font-size: 0.80rem; }
+      .cat-tag    { font-size: 0.65rem; padding: 2px 7px; }
     }
   </style>
   <!-- イベントデータ (GitHub Actions により毎朝自動更新) -->
