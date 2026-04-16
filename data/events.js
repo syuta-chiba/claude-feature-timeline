@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-04-14
+// Last updated: 2026-04-16
 window.EVENTS_DATA = [
+  // 自動追加: 2026-04-16
+  { date:"2026-04-16", cat:"model", title:"We've launched Claude Opus 4", desc:"We've launched Claude Opus 4.7 , our most capable generally available model for complex reasoning and agentic coding, at the same $5 / $25 per MTok pricing as Opus 4.6. See What's new in Claude Opus 4.7 for capability improvements, new features, and the updated tokenizer. Opus 4.7 includes API break", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-04-14
   { date:"2026-04-14", cat:"deprecation", title:"We announced the deprecation of the Claude Sonnet 4 model ( claude-sonnet-4-2025", desc:"We announced the deprecation of the Claude Sonnet 4 model ( claude-sonnet-4-20250514 ) and the Claude Opus 4 model ( claude-opus-4-20250514 ), with retirement on the Claude API scheduled for June 15, 2026. We recommend migrating to Claude Sonnet 4.6 and Claude Opus 4.6 respectively. Read more in mod", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
