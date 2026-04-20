@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-04-16
+// Last updated: 2026-04-20
 window.EVENTS_DATA = [
+  // 自動追加: 2026-04-20
+  { date:"2026-04-20", cat:"deprecation", title:"We've retired the Claude Haiku 3 model ( claude-3-haiku-20240307 )", desc:"We've retired the Claude Haiku 3 model ( claude-3-haiku-20240307 ). All requests to this model will now return an error. We recommend upgrading to Claude Haiku 4.5 .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-04-16
   { date:"2026-04-16", cat:"model", title:"We've launched Claude Opus 4", desc:"We've launched Claude Opus 4.7 , our most capable generally available model for complex reasoning and agentic coding, at the same $5 / $25 per MTok pricing as Opus 4.6. See What's new in Claude Opus 4.7 for capability improvements, new features, and the updated tokenizer. Opus 4.7 includes API break", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
