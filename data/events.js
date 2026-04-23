@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-04-20
+// Last updated: 2026-04-23
 window.EVENTS_DATA = [
+  // 自動追加: 2026-04-23
+  { date:"2026-04-23", cat:"tool", title:"Memory for Claude Managed Agents is now in public beta under the standard manage", desc:"Memory for Claude Managed Agents is now in public beta under the standard managed-agents-2026-04-01 header. See Using agent memory for the full integration guide.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-04-20
   { date:"2026-04-20", cat:"deprecation", title:"We've retired the Claude Haiku 3 model ( claude-3-haiku-20240307 )", desc:"We've retired the Claude Haiku 3 model ( claude-3-haiku-20240307 ). All requests to this model will now return an error. We recommend upgrading to Claude Haiku 4.5 .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
