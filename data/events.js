@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-04-23
+// Last updated: 2026-04-25
 window.EVENTS_DATA = [
+  // 自動追加: 2026-04-25
+  { date:"2026-04-24", cat:"console", title:"We've released the Rate Limits API", desc:"We've released the Rate Limits API , allowing administrators to programmatically query the rate limits configured for their organization and workspaces.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-04-23
   { date:"2026-04-23", cat:"tool", title:"Memory for Claude Managed Agents is now in public beta under the standard manage", desc:"Memory for Claude Managed Agents is now in public beta under the standard managed-agents-2026-04-01 header. See Using agent memory for the full integration guide.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
