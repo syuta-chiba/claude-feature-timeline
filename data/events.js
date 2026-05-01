@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-04-25
+// Last updated: 2026-05-01
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-01
+  { date:"2026-04-30", cat:"deprecation", title:"We've retired the 1M token context window beta ( context-1m-2025-08-07 ) for Cla", desc:"We've retired the 1M token context window beta ( context-1m-2025-08-07 ) for Claude Sonnet 4.5 and Claude Sonnet 4. The beta header now has no effect on these models, and requests exceeding the standard 200k-token context window return an error. To use the 1M context window, migrate to Claude Sonnet", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-04-25
   { date:"2026-04-24", cat:"console", title:"We've released the Rate Limits API", desc:"We've released the Rate Limits API , allowing administrators to programmatically query the rate limits configured for their organization and workspaces.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
