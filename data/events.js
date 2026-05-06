@@ -1,8 +1,14 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-01
+// Last updated: 2026-05-06
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-06
+  { date:"2026-05-06", cat:"api", title:"Multiagent sessions and Outcomes are now in public beta under the standard manag", desc:"Multiagent sessions and Outcomes are now in public beta under the standard managed-agents-2026-04-01 beta header.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-06", cat:"tool", title:"Vault credential background refresh is now supported for mcp_oauth credentials", desc:"Vault credential background refresh is now supported for mcp_oauth credentials. See Authenticate with vaults .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-06", cat:"tool", title:"Webhooks for Claude Managed Agents are now supported", desc:"Webhooks for Claude Managed Agents are now supported. Webhook event types include session and vault lifecycle events. See Subscribe to webhooks .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-06", cat:"api", title:"Additional filtering and sorting options are now supported", desc:"Additional filtering and sorting options are now supported. Sessions can be filtered by status, and events can be filtered by type. Events can now be filtered by creation time.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-01
   { date:"2026-04-30", cat:"deprecation", title:"We've retired the 1M token context window beta ( context-1m-2025-08-07 ) for Cla", desc:"We've retired the 1M token context window beta ( context-1m-2025-08-07 ) for Claude Sonnet 4.5 and Claude Sonnet 4. The beta header now has no effect on these models, and requests exceeding the standard 200k-token context window return an error. To use the 1M context window, migrate to Claude Sonnet", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
