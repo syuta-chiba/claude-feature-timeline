@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-06
+// Last updated: 2026-05-11
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-11
+  { date:"2026-05-11", cat:"model", title:"We've launched Claude Platform on AWS", desc:"We've launched Claude Platform on AWS , bringing the Claude API to Anthropic-managed infrastructure accessible through AWS, with AWS billing and IAM authentication. Access the full Messages API, Files API, Message Batches API, Claude Managed Agents, Agent Skills, code execution, and tool use through", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-06
   { date:"2026-05-06", cat:"api", title:"Multiagent sessions and Outcomes are now in public beta under the standard manag", desc:"Multiagent sessions and Outcomes are now in public beta under the standard managed-agents-2026-04-01 beta header.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
   { date:"2026-05-06", cat:"tool", title:"Vault credential background refresh is now supported for mcp_oauth credentials", desc:"Vault credential background refresh is now supported for mcp_oauth credentials. See Authenticate with vaults .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
