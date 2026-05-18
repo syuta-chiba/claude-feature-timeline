@@ -1,8 +1,12 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-12
+// Last updated: 2026-05-18
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-18
+  { date:"2026-05-18", cat:"tool", title:"The web search tool now returns richer SEC filing data", desc:"The web search tool now returns richer SEC filing data, making it easier to ground financial research agents, earnings analysis, and due-diligence workflows in primary sources with citations.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-13", cat:"api", title:"We've launched cache diagnostics in public beta", desc:"We've launched cache diagnostics in public beta. Pass diagnostics.previous_message_id on a Messages request and the API reports a cache_miss_reason explaining where the prompt cache prefix diverged from the previous turn. Include the cache-diagnosis-2026-04-07 beta header in your requests.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-12
   { date:"2026-05-12", cat:"model", title:"Fast mode (research preview) now supports Claude Opus 4", desc:"Fast mode (research preview) now supports Claude Opus 4.7. Set speed: \"fast\" with model: \"claude-opus-4-7\" and the fast-mode-2026-02-01 beta header for significantly faster output token generation at premium pricing. Pricing, rate limits, and access are the same as for Opus 4.6 fast mode; interested", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
