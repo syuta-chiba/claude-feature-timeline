@@ -1,8 +1,14 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-18
+// Last updated: 2026-05-19
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-19
+  { date:"2026-05-19", cat:"tool", title:"MCP tunnels is now available as a Research Preview", desc:"MCP tunnels is now available as a Research Preview, so you can connect to MCP servers in your private network.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-19", cat:"tool", title:"Self-hosted sandboxes are now available for Claude Managed Agents", desc:"Self-hosted sandboxes are now available for Claude Managed Agents, as an alternative to running tool execution in Anthropic's infrastructure. See Self-hosted sandboxes .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-19", cat:"tool", title:"With Claude Managed Agents", desc:"With Claude Managed Agents, you can now update the agent's MCP server and tool configurations associated with an active session.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-05-19", cat:"tool", title:"With Claude Managed Agents", desc:"With Claude Managed Agents, large outputs from agent_toolset and MCP tools exceeding 100K tokens are now automatically spilled to a file in the sandbox. The model receives a truncated preview with the file path and can read the full content from there.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-18
   { date:"2026-05-18", cat:"tool", title:"The web search tool now returns richer SEC filing data", desc:"The web search tool now returns richer SEC filing data, making it easier to ground financial research agents, earnings analysis, and due-diligence workflows in primary sources with citations.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
   { date:"2026-05-13", cat:"api", title:"We've launched cache diagnostics in public beta", desc:"We've launched cache diagnostics in public beta. Pass diagnostics.previous_message_id on a Messages request and the API reports a cache_miss_reason explaining where the prompt cache prefix diverged from the previous turn. Include the cache-diagnosis-2026-04-07 beta header in your requests.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
