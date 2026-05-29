@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-28
+// Last updated: 2026-05-29
 window.EVENTS_DATA = [
+  // 自動追加: 2026-05-29
+  { date:"2026-05-29", cat:"tool", title:"Claude Managed Agents webhooks", desc:"Claude Managed Agents webhooks , multiagent orchestration , and self-hosted sandboxes are now available on Claude Platform on AWS . See IAM actions for Claude Platform on AWS for the new IAM actions and the AnthropicSelfHostedEnvironmentAccess managed policy.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-28
   { date:"2026-05-28", cat:"model", title:"We've launched Claude Opus 4", desc:"We've launched Claude Opus 4.8 ( claude-opus-4-8 ), our most capable generally available model. Claude Opus 4.8 supports a 1M token context window by default on the Claude API, Amazon Bedrock, and Vertex AI (200k on Microsoft Foundry), 128k max output tokens, and the same set of tools and platform f", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
   { date:"2026-05-28", cat:"model", title:"We've launched mid-conversation system messages", desc:"We've launched mid-conversation system messages . On Claude Opus 4.8, you can send role: \"system\" messages after a user turn (subject to placement rules ) in the messages array, preserving prompt cache hits when instructions change during a long-running session. No beta header is required.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
