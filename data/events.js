@@ -1,8 +1,12 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-05-29
+// Last updated: 2026-06-02
 window.EVENTS_DATA = [
+  // 自動追加: 2026-06-02
+  { date:"2026-06-02", cat:"tool", title:"The advisor tool now supports a max_tokens parameter to cap the advisor model's ", desc:"The advisor tool now supports a max_tokens parameter to cap the advisor model's output per call, reducing latency and output token cost for workloads that don't need full-length advisor responses. Set tools[].max_tokens on the advisor tool definition; see Capping advisor output .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+  { date:"2026-06-02", cat:"api", title:"On the Claude API", desc:"On the Claude API, you are no longer billed for a request when it returns stop_reason: \"refusal\" without Claude having generated any output. See Streaming refusals for detecting and handling refusals.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-05-29
   { date:"2026-05-29", cat:"tool", title:"Claude Managed Agents webhooks", desc:"Claude Managed Agents webhooks , multiagent orchestration , and self-hosted sandboxes are now available on Claude Platform on AWS . See IAM actions for Claude Platform on AWS for the new IAM actions and the AnthropicSelfHostedEnvironmentAccess managed policy.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
 
