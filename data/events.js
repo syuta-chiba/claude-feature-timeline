@@ -1,8 +1,11 @@
 // Auto-generated data file. Updated daily by GitHub Actions.
 // Source: https://platform.claude.com/docs/en/release-notes/overview
 //         https://www.anthropic.com/news
-// Last updated: 2026-06-02
+// Last updated: 2026-06-05
 window.EVENTS_DATA = [
+  // 自動追加: 2026-06-05
+  { date:"2026-06-05", cat:"deprecation", title:"We announced the deprecation of the Claude Opus 4", desc:"We announced the deprecation of the Claude Opus 4.1 model ( claude-opus-4-1-20250805 ), with retirement on the Claude API scheduled for August 5, 2026. We recommend migrating to Claude Opus 4.8 . Read more in model deprecations .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
+
   // 自動追加: 2026-06-02
   { date:"2026-06-02", cat:"tool", title:"The advisor tool now supports a max_tokens parameter to cap the advisor model's ", desc:"The advisor tool now supports a max_tokens parameter to cap the advisor model's output per call, reducing latency and output token cost for workloads that don't need full-length advisor responses. Set tools[].max_tokens on the advisor tool definition; see Capping advisor output .", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
   { date:"2026-06-02", cat:"api", title:"On the Claude API", desc:"On the Claude API, you are no longer billed for a request when it returns stop_reason: \"refusal\" without Claude having generated any output. See Streaming refusals for detecting and handling refusals.", url:"https://platform.claude.com/docs/en/release-notes/overview", kw:"" },
